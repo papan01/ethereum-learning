@@ -1,0 +1,19 @@
+{
+  "name": "ethereum-cathay",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter web --filter api dev",
+    "build": "pnpm --filter @repo/db db:generate && pnpm --recursive --filter '!contracts' build && pnpm --filter contracts build",
+    "db:generate": "pnpm --filter @repo/db db:generate",
+    "db:migrate": "dotenv -e .env -- pnpm --filter @repo/db exec prisma migrate dev",
+    "db:push": "dotenv -e .env -- pnpm --filter @repo/db exec prisma db push",
+    "contracts:compile": "pnpm --filter contracts compile"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
