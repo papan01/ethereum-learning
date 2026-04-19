@@ -1,13 +1,52 @@
+# Dependencies
 node_modules
-.DS_Store
+.pnpm-store
+
+# Environment (keep tracked examples)
 .env
-.env.local
-.next
+.env.*
+!.env.example
+
+# Logs & debug
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editors
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build / TypeScript
 dist
 build
 coverage
-*.log
+*.tsbuildinfo
+
+# Next.js
+.next
+out
+
+# Vercel
+.vercel
+
+# Turborepo (if added later)
+.turbo
+
+# --- apps/api (Prisma generated client) ---
+apps/api/packages/db/src/generated
+
+# --- apps/contracts (Hardhat / Solidity) ---
 apps/contracts/cache
 apps/contracts/artifacts
 apps/contracts/typechain-types
-apps/api/packages/db/src/generated
+apps/contracts/coverage

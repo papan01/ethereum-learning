@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "commonjs",
+    "lib": ["es2023"],
+    "types": ["node"],
+    "module": "node16",
+    "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "outDir": "dist",
-    "declaration": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "moduleResolution": "node16",
+    "outDir": "dist"
   },
-  "include": ["./hardhat.config.ts", "./scripts", "./test"]
+  "include": [
+    "./hardhat.config.ts",
+    "./scripts/**/*.ts",
+    "./test/**/*.ts",
+    "scripts/deploy.ts"
+  ]
 }

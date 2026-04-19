@@ -2,7 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SiweMessage } from "siwe";
-import { useAccount, useChainId, useConnect, useDisconnect, useSignMessage } from "wagmi";
+import {
+  useAccount,
+  useChainId,
+  useConnect,
+  useDisconnect,
+  useSignMessage,
+} from "wagmi";
 import { apiFetch } from "@/lib/api";
 
 type MeResponse = { user: { address: string } | null };
@@ -35,16 +41,23 @@ export default function HomePage() {
     void refreshMe();
   }, [refreshMe]);
 
-  const injected = useMemo(() => connectors.find((c) => c.id === "injected"), [connectors]);
+  const injected = useMemo(
+    () => connectors.find((c) => c.id === "injected"),
+    [connectors],
+  );
 
   const signIn = useCallback(async () => {
     if (!address) return;
     setError(null);
     setBusy(true);
     try {
-      const nonceRes = await apiFetch(`/auth/nonce?address=${encodeURIComponent(address)}`);
+      const nonceRes = await apiFetch(
+        `/auth/nonce?address=${encodeURIComponent(address)}`,
+      );
       if (!nonceRes.ok) {
-        const err = (await nonceRes.json().catch(() => null)) as { error?: string } | null;
+        const err = (await nonceRes.json().catch(() => null)) as {
+          error?: string;
+        } | null;
         throw new Error(err?.error ?? "Failed to fetch nonce");
       }
       const { nonce } = (await nonceRes.json()) as { nonce: string };
@@ -71,7 +84,9 @@ export default function HomePage() {
       });
 
       if (!verifyRes.ok) {
-        const err = (await verifyRes.json().catch(() => null)) as { error?: string } | null;
+        const err = (await verifyRes.json().catch(() => null)) as {
+          error?: string;
+        } | null;
         throw new Error(err?.error ?? "Verification failed");
       }
 
@@ -92,7 +107,9 @@ export default function HomePage() {
   return (
     <main>
       <h1>Ethereum Cathay</h1>
-      <p>Next.js + Node API + SIWE + PostgreSQL foundation.</p>
+      <p>
+        Next.js + Node API + SIWE (wallet proof) + JWT session + PostgreSQL.
+      </p>
 
       <div className="actions">
         {!isConnected ? (
@@ -105,7 +122,11 @@ export default function HomePage() {
           </button>
         ) : (
           <>
-            <button type="button" disabled={busy || isSignPending} onClick={() => void signIn()}>
+            <button
+              type="button"
+              disabled={busy || isSignPending}
+              onClick={() => void signIn()}
+            >
               {busy || isSignPending ? "Signing…" : "Sign-In with Ethereum"}
             </button>
             <button type="button" onClick={() => void signOut()}>
@@ -127,11 +148,13 @@ export default function HomePage() {
 
       <div className="card">
         <strong>Wallet</strong>
-        <p>{isConnected && address ? <code>{address}</code> : "Not connected"}</p>
+        <p>
+          {isConnected && address ? <code>{address}</code> : "Not connected"}
+        </p>
       </div>
 
       <div className="card">
-        <strong>Session</strong>
+        <strong>Session (JWT)</strong>
         {me === undefined ? (
           <p>Loading…</p>
         ) : me ? (

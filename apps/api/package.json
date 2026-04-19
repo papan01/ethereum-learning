@@ -12,6 +12,7 @@
     "@hono/node-server": "^1.14.1",
     "@repo/db": "workspace:*",
     "dotenv": "^16.5.0",
+    "jose": "^6.0.10",
     "hono": "^4.7.6",
     "siwe": "^3.0.0",
     "viem": "^2.28.0",

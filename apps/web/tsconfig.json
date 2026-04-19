@@ -12,7 +12,10 @@
       ]
     },
     "noEmit": true,
-    "allowJs": true
+    "allowJs": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": false
   },
   "include": [
     "next-env.d.ts",

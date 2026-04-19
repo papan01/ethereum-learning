@@ -6,7 +6,7 @@ Shared TypeScript presets live under [`tooling/tsconfig`](tooling/tsconfig) (not
 
 ## Prerequisites
 
-- Node.js 20.19+（Prisma ORM 7 最低需求）
+- Node.js 22.10+（Hardhat 3 最低需求；Prisma ORM 7 亦相容）
 - [pnpm](https://pnpm.io/) 9+
 - **PostgreSQL** running locally (or any reachable instance)
 
@@ -59,7 +59,7 @@ pnpm dev
 | `pnpm dev` | Run `web` + `api` in parallel |
 | `pnpm db:migrate` | Prisma migrate (dev) |
 | `pnpm db:push` | Prisma `db push` (schema sync without migration files) |
-| `pnpm contracts:compile` | Compile Hardhat contracts |
+| `pnpm contracts:compile` | Hardhat 3：`contracts` 的 `build`（編譯合約） |
 
 ## Production considerations (later)
 

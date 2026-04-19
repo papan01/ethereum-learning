@@ -25,4 +25,4 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
-export type { User, AuthNonce, Session, Prisma } from "./generated/prisma/client.js";
+export type { User, AuthNonce, Prisma } from "./generated/prisma/client.js";

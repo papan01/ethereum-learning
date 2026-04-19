@@ -8,10 +8,9 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  address   String    @unique
-  createdAt DateTime  @default(now())
-  sessions  Session[]
+  id        String   @id @default(cuid())
+  address   String   @unique
+  createdAt DateTime @default(now())
 }
 
 model AuthNonce {
@@ -25,11 +24,3 @@ model AuthNonce {
   @@index([address, nonce])
 }
 
-model Session {
-  id        String   @id @default(cuid())
-  tokenHash String   @unique
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-}
