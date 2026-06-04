@@ -55,3 +55,182 @@ code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.92em;
 }
+
+.vault-meta {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.92rem;
+}
+
+.vault-addr {
+  word-break: break-all;
+}
+
+.vault-warning {
+  color: color-mix(in oklab, CanvasText 88%, Canvas);
+  margin: 0.5rem 0 0;
+}
+
+.vault-stats {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.75rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid color-mix(in oklab, CanvasText 12%, Canvas);
+  border-bottom: 1px solid color-mix(in oklab, CanvasText 12%, Canvas);
+}
+
+.vault-stats > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.vault-label {
+  opacity: 0.85;
+  font-size: 0.92rem;
+}
+
+.vault-value {
+  font-weight: 600;
+}
+
+.vault-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.vault-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.vault-field label {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.vault-field input {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid color-mix(in oklab, CanvasText 22%, Canvas);
+  background: Field;
+  color: FieldText;
+  max-width: 12rem;
+}
+
+.vault-field button {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.vault-error {
+  color: #b00020;
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .vault-error {
+    color: #ff8a80;
+  }
+}
+
+.vault-tx {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.vault-tx-wrap {
+  margin-top: 0.75rem;
+}
+
+.vault-tx-wrap .vault-tx {
+  margin-top: 0;
+}
+
+.vault-tx-gas {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+}
+
+.vault-tx-gas > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.vault-tx-raw {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed color-mix(in oklab, CanvasText 16%, Canvas);
+  font-size: 0.9rem;
+}
+
+.vault-tx-raw > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.vault-tx-raw code {
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.vault-tx-data {
+  align-items: flex-start !important;
+}
+
+.vault-tx-data code {
+  max-width: 100%;
+}
+
+.vault-lookup {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid color-mix(in oklab, CanvasText 12%, Canvas);
+}
+
+.vault-lookup > label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.vault-lookup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-lookup-row input {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid color-mix(in oklab, CanvasText 22%, Canvas);
+  background: Field;
+  color: FieldText;
+  min-width: 20rem;
+  max-width: 100%;
+}
+
+.vault-lookup-result {
+  margin: 0.5rem 0 0;
+  font-size: 0.92rem;
+}

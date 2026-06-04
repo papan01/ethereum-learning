@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SiweMessage } from "siwe";
 import {
-  useAccount,
-  useChainId,
-  useConnect,
-  useDisconnect,
-  useSignMessage,
+  useAccount, // 取得錢包地址
+  useChainId, // 取得鏈id
+  useConnect, // 連線metamask錢包
+  useDisconnect, // 斷開連線metamask錢包
+  useSignMessage, // 簽署訊息
 } from "wagmi";
 import { apiFetch } from "@/lib/api";
+import { LearningVaultPanel } from "@/components/learning-vault-panel";
 
 type MeResponse = { user: { address: string } | null };
 
@@ -107,10 +108,6 @@ export default function HomePage() {
   return (
     <main>
       <h1>Ethereum Cathay</h1>
-      <p>
-        Next.js + Node API + SIWE (wallet proof) + JWT session + PostgreSQL.
-      </p>
-
       <div className="actions">
         {!isConnected ? (
           <button
@@ -165,6 +162,8 @@ export default function HomePage() {
           <p>No active session (complete SIWE after connecting).</p>
         )}
       </div>
+
+      <LearningVaultPanel />
     </main>
   );
 }

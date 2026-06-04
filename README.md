@@ -52,6 +52,53 @@ pnpm dev
 - For local Hardhat / chain `31337`, run a wallet on that chain (e.g. MetaMask “Localhost 8545”) before signing.
 - `WEB_ORIGIN` must match the browser origin that loads the Next app (default `http://localhost:3000`).
 
+## Hardhat local chain + deploy flow
+
+1. **Start local Hardhat node (`31337`)**
+
+```bash
+pnpm --filter contracts exec hardhat node
+```
+
+2. **Deploy `LearningVault` to local chain** (open another terminal)
+
+```bash
+pnpm --filter contracts exec hardhat run scripts/deploy.ts --network hardhatMainnet
+```
+
+3. **Set frontend contract address**
+
+Copy the deployed address from terminal output and set it in repo-root `.env`:
+
+```bash
+NEXT_PUBLIC_LEARNING_VAULT_ADDRESS=0x...
+```
+
+Then restart `pnpm dev` so Next.js picks up updated `NEXT_PUBLIC_*` env vars.
+
+## Deploy to Sepolia
+
+1. Set required env vars in repo-root `.env`:
+
+```bash
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/<your_project_id>
+SEPOLIA_PRIVATE_KEY=0x<your_private_key>
+# Optional: explicit LearningVault owner
+LEARNING_VAULT_OWNER=0x<owner_address>
+```
+
+2. Deploy:
+
+```bash
+pnpm --filter contracts exec hardhat run scripts/deploy.ts --network sepolia
+```
+
+3. Update frontend/API chain config for Sepolia:
+
+- `NEXT_PUBLIC_SIWE_CHAIN_ID=11155111`
+- `SIWE_CHAIN_ID=11155111`
+- `NEXT_PUBLIC_LEARNING_VAULT_ADDRESS=<deployed_sepolia_address>`
+
 ## Useful commands
 
 | Command | Description |
